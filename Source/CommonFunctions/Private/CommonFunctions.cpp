@@ -85,10 +85,13 @@ bool FCommonFunctionsModule::SaveStringasFile(FString Str,  FString FileName)
 	if (FFileHelper::SaveStringToFile(Str,*FileName,FFileHelper::EEncodingOptions::ForceUTF8))
 	{
 		UE_LOG(LogTemp,Warning,TEXT("Save Str Success!"));
+		return true;
 	}else
 	{
 		UE_LOG(LogTemp,Warning,TEXT("Save Str Failed!"));
+		return false;
 	}
+	
 }
 
 #undef LOCTEXT_NAMESPACE
