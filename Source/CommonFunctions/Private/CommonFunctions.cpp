@@ -91,7 +91,6 @@ bool FCommonFunctionsModule::SaveStringasFile(FString Str,  FString FileName)
 		UE_LOG(LogTemp,Warning,TEXT("Save Str Failed!"));
 		return false;
 	}
-	
 }
 
 #undef LOCTEXT_NAMESPACE
