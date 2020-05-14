@@ -5,6 +5,7 @@
 #include "CommonFunctionsCommands.h"
 #include "Misc/MessageDialog.h"
 #include "ToolMenus.h"
+#include "Misc/FileHelper.h"
 
 static const FName CommonFunctionsTabName("CommonFunctions");
 
@@ -46,12 +47,12 @@ void FCommonFunctionsModule::ShutdownModule()
 void FCommonFunctionsModule::PluginButtonClicked()
 {
 	// Put your "OnButtonClicked" stuff here
-	FText DialogText = FText::Format(
-							LOCTEXT("PluginButtonDialogText", "Add code to {0} in {1} to override this button's actions"),
-							FText::FromString(TEXT("FCommonFunctionsModule::PluginButtonClicked()")),
-							FText::FromString(TEXT("CommonFunctions.cpp"))
-					   );
-	FMessageDialog::Open(EAppMsgType::Ok, DialogText);
+	// FText DialogText = FText::Format(
+	// 						LOCTEXT("PluginButtonDialogText", "Add code to {0} in {1} to override this button's actions"),
+	// 						FText::FromString(TEXT("FCommonFunctionsModule::PluginButtonClicked()")),
+	// 						FText::FromString(TEXT("CommonFunctions.cpp"))
+	// 				   );
+	// FMessageDialog::Open(EAppMsgType::Ok, DialogText);
 }
 
 void FCommonFunctionsModule::RegisterMenus()
@@ -76,6 +77,17 @@ void FCommonFunctionsModule::RegisterMenus()
 				Entry.SetCommandList(PluginCommands);
 			}
 		}
+	}
+}
+
+bool FCommonFunctionsModule::SaveStringasFile(FString Str,  FString FileName)
+{
+	if (FFileHelper::SaveStringToFile(Str,*FileName,FFileHelper::EEncodingOptions::ForceUTF8))
+	{
+		UE_LOG(LogTemp,Warning,TEXT("Save Str Success!"));
+	}else
+	{
+		UE_LOG(LogTemp,Warning,TEXT("Save Str Failed!"));
 	}
 }
 

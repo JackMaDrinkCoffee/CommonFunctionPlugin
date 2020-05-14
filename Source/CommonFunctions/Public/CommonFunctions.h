@@ -24,6 +24,14 @@ private:
 	void RegisterMenus();
 
 
+	//save string as file
+	bool SaveStringasFile(FString Str,FString FileName);
+
+
+
+	
+
+
 private:
 	TSharedPtr<class FUICommandList> PluginCommands;
 };
